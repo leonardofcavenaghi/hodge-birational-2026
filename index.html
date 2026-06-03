@@ -68,13 +68,15 @@
             padding: 35px;
             margin-bottom: 30px;
         }
-        .poster-placeholder {
-            border: 2px dashed #bdc3c7;
-            background-color: #fdfdfd;
-            padding: 60px 20px;
+        .poster-container {
             text-align: center;
             margin-bottom: 30px;
+        }
+        .poster-container img {
+            max-width: 100%;
+            height: auto;
             border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         .city-image {
             text-align: center;
@@ -123,6 +125,60 @@
             display: block;
             margin-top: 3px;
         }
+        /* Form CSS Variables */
+        .registration-form {
+            background-color: #fafbfc;
+            padding: 25px;
+            border: 1px solid #e1e4e8;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .radio-group {
+            margin-bottom: 8px;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 8px;
+        }
+        .radio-group label {
+            display: inline;
+            font-weight: normal;
+            color: var(--text-color);
+        }
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -157,9 +213,8 @@
             <p>This conference aims at bringing together specialists in Complex Algebraic Geometry and Hodge theory to promote their research. The event will serve as a platform for discussing recent advancements and fostering collaboration within the international mathematical community.</p>
         </div>
 
-        <div class="poster-placeholder">
-            <h3 style="border: none; color: #7f8c8d; margin-bottom: 10px;">[ Official Poster Space ]</h3>
-            <p style="color: #95a5a6; font-size: 0.9em; margin: 0;">Once finalized, save your poster as <code>poster.jpg</code>, upload it to the repository, and modify the HTML to display the image here.</p>
+        <div class="poster-container">
+            <img src="poster.jpg" alt="Hodge Theory Conference Poster">
         </div>
 
         <div class="grid-2">
@@ -174,9 +229,65 @@
             </div>
             
             <div class="city-image">
-                <img src="sofia-cathedral.jpg" alt="Alexander Nevsky Cathedral, Sofia">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Sofia_-_Alexander_Nevsky_Cathedral.jpg/800px-Sofia_-_Alexander_Nevsky_Cathedral.jpg" alt="Alexander Nevsky Cathedral, Sofia">
                 <div class="city-caption">Alexander Nevsky Cathedral, Sofia (Public Domain / Wikimedia Commons)</div>
             </div>
+        </div>
+
+        <div class="card">
+            <h3>Registration and Financial Support</h3>
+            <p>Registration for the Hodge Theory and Birational Geometry conference is currently open. Participants requesting financial support must provide explicit travel parameters to facilitate administrative processing.</p>
+            
+            <form action="https://formspree.io/f/xeewjkad" method="POST" class="registration-form">
+                
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="institution">Institution</label>
+                    <input type="text" id="institution" name="Institution" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you require financial support from ICMS-Sofia/IMSA to attend this conference?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="support-yes" name="Requires_Support" value="Yes" required>
+                        <label for="support-yes">Yes</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" id="support-no" name="Requires_Support" value="No" required>
+                        <label for="support-no">No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="route">If requesting support, state your predicted travel route (Origin City/Country to Sofia)</label>
+                    <input type="text" id="route" name="Travel_Route">
+                </div>
+
+                <div class="form-group">
+                    <label for="dates">Approximate travel dates (Arrival and Departure)</label>
+                    <input type="text" id="dates" name="Travel_Dates" placeholder="e.g., Dec 6 - Dec 12">
+                </div>
+
+                <div class="form-group">
+                    <label for="funding">If requesting support, specify the scope of funding required:</label>
+                    <select id="funding" name="Funding_Scope">
+                        <option value="Not Applicable">Not Applicable</option>
+                        <option value="Airfare Only">Airfare only</option>
+                        <option value="Airfare and Hotel">Airfare and Hotel accommodation</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Registration</button>
+            </form>
         </div>
 
         <div class="card">
