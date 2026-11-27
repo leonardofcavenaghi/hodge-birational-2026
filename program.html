@@ -3,293 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program - Hodge Theory and Birational Geometry 2026</title>
-    <style>
-        :root {
-            --primary-color: #1e3d59;
-            --secondary-color: #8c1c13;
-            --teal-color: #1b514d;
-            --background-color: #f7f9fa;
-            --text-color: #2c3e50;
-            --card-bg: #ffffff;
-            --border-color: #cfd8e0;
-            --course-bg: #e3eef8;
-            --seq-bg: #f6efe0;
-            --event-bg: #e4f1e8;
-            --break-bg: #eef2f6;
-            --time-bg: #f5f8fa;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.55;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 50px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--secondary-color);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.6em;
-            letter-spacing: 1px;
-        }
-        header h2 {
-            margin: 10px 0 0 0;
-            font-size: 1.2em;
-            font-weight: 300;
-        }
-        nav {
-            background-color: #ffffff;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-        nav a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 1080px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: 45vh;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 32px 30px;
-            margin-bottom: 30px;
-        }
-        .top-bar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        .top-bar-text {
-            flex: 1 1 520px;
-        }
-        .top-bar p {
-            margin: 6px 0 0 0;
-            color: #4f6475;
-            font-size: 0.96em;
-        }
-        .pdf-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 12px 22px;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-            white-space: nowrap;
-        }
-        .pdf-btn:hover {
-            background-color: var(--secondary-color);
-        }
-        .section-tag {
-            font-size: 0.8em;
-            font-weight: 700;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            color: var(--secondary-color);
-            margin-bottom: 4px;
-        }
-        .section-tag.teal {
-            color: var(--teal-color);
-        }
-        h3 {
-            color: var(--primary-color);
-            margin: 0 0 6px 0;
-            font-size: 1.65em;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 8px;
-        }
-        h3.teal {
-            color: var(--teal-color);
-            border-bottom-color: var(--teal-color);
-        }
-        .subtitle-meta {
-            color: #556877;
-            font-size: 0.95em;
-            margin: 8px 0 18px 0;
-        }
-        .table-wrap {
-            overflow-x: auto;
-        }
-        table.schedule {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            font-size: 0.94em;
-            min-width: 720px;
-        }
-        table.schedule th.col-time {
-            width: 112px;
-        }
-        table.schedule.revalski th.col-day {
-            width: calc((100% - 112px) / 2);
-        }
-        table.schedule th,
-        table.schedule td {
-            border: 1px solid var(--border-color);
-            padding: 10px 12px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        table.schedule thead th {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            font-weight: 600;
-            padding: 12px 10px;
-        }
-        table.schedule.revalski thead th {
-            background-color: var(--teal-color);
-        }
-        table.schedule thead th .day-date {
-            display: block;
-            font-weight: 400;
-            font-size: 0.86em;
-            opacity: 0.88;
-            margin-top: 2px;
-        }
-        td.time-col {
-            background-color: var(--time-bg);
-            font-weight: 600;
-            color: var(--primary-color);
-            width: 112px;
-            white-space: nowrap;
-            font-size: 0.9em;
-        }
-        table.schedule.revalski td.time-col {
-            color: var(--teal-color);
-        }
-        td.course-cell {
-            background-color: var(--course-bg);
-        }
-        td.seq-cell {
-            background-color: var(--seq-bg);
-        }
-        td.event-cell {
-            background-color: var(--event-bg);
-        }
-        td.break-cell {
-            background-color: var(--break-bg);
-            color: #4f6475;
-            font-size: 0.88em;
-            padding: 6px 10px;
-        }
-        table.schedule td.left-align {
-            text-align: left;
-            padding: 11px 15px;
-        }
-        .spk-name {
-            font-weight: 700;
-            color: #1c2b36;
-            display: block;
-        }
-        .spk-sub {
-            font-size: 0.84em;
-            color: #425666;
-            display: block;
-            margin-top: 2px;
-        }
-        .talk-title {
-            font-style: italic;
-            font-size: 0.9em;
-            color: #2e4050;
-            display: block;
-            margin-top: 3px;
-        }
-        .legend-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            margin-top: 14px;
-            font-size: 0.88em;
-            color: #4f6475;
-        }
-        .legend-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            align-items: center;
-        }
-        .swatch {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border: 1px solid var(--border-color);
-            vertical-align: -2px;
-            margin-right: 6px;
-            border-radius: 2px;
-        }
-        .footnote {
-            margin-top: 10px;
-            font-size: 0.86em;
-            color: #607282;
-        }
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: var(--primary-color);
-            color: #ffffff;
-            font-size: 0.9em;
-            margin-top: 40px;
-        }
-    </style>
+    <title>Program | Hodge Theory and Birational Geometry 2026</title>
+    <meta name="description" content="Unified Scientific Programme (December 7–12, 2026) for Hodge Theory and Birational Geometry and Research and Leadership in Sofia, Bulgaria.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23183247'/%3E%3Cpolygon points='32,8 56,32 32,56 8,32' fill='none' stroke='%239ad8fc' stroke-width='3.5'/%3E%3Cpolygon points='32,19 45,32 32,45 19,32' fill='%238c1c13' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20261127">
 </head>
 <body>
-    <header>
-        <h1>Hodge Theory and Birational Geometry</h1>
-        <h2>December 7 – 11, 2026 | Sofia, Bulgaria</h2>
-        <p style="margin: 10px 0 0 0; font-size: 1.05em; font-style: italic; opacity: 0.92; letter-spacing: 0.3px;">Advancing the Frontier of AI in Algebraic Geometry</p>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-kicker">ICMS-Sofia &nbsp;&middot;&nbsp; IMI-BAS &nbsp;&middot;&nbsp; IMSA</div>
+            <h1>Hodge Theory and Birational Geometry</h1>
+            <h2>December 7 – 11, 2026 &nbsp;|&nbsp; Sofia, Bulgaria</h2>
+            <p class="header-slogan">Advancing the Frontier of <strong>AI in Algebraic Geometry</strong></p>
+            <div class="header-pills">
+                <span class="header-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Unified Programme: Dec 7 – 12, 2026
+                </span>
+                <span class="header-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Acad. Georgi Bonchev Str., Block 29A, Sofia
+                </span>
+            </div>
+        </div>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="program.html">Program</a>
-        <a href="participants.html">Participants</a>
+    <nav class="site-nav" aria-label="Primary">
+        <div class="nav-inner">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="program.html" aria-current="page">Program</a>
+                <a href="participants.html">Participants</a>
+            </div>
+            <a class="nav-cta" href="Sofia_Unified_Programme_7-12_December_2026.pdf" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
+                Programme (PDF)
+            </a>
+        </div>
     </nav>
 
-    <div class="container">
+    <main class="container">
         <div class="card">
             <div class="top-bar">
                 <div class="top-bar-text">
-                    <strong style="font-size: 1.15em; color: var(--primary-color);">Unified Scientific Programme (December 7 – 12, 2026)</strong>
+                    <span class="top-bar-title">Unified Scientific Programme (December 7 – 12, 2026)</span>
                     <p>Includes <em>Hodge Theory and Birational Geometry</em> (Monday–Thursday, December 7–10) and the joint conference <em>Research and Leadership: A Celebration of Julian Revalski’s 70th Birthday</em> (Friday–Saturday, December 11–12). All times are Sofia local time (EET).</p>
+                    <div class="jump-pills">
+                        <a class="jump-pill" href="#part-hodge">01 / Mon–Thu: Hodge Theory &amp; Birational Geometry</a>
+                        <a class="jump-pill teal" href="#part-revalski">02 / Fri–Sat: Research &amp; Leadership</a>
+                    </div>
                 </div>
-                <a class="pdf-btn" href="Sofia_Unified_Programme_7-12_December_2026.pdf" target="_blank" rel="noopener">Download Programme (PDF)</a>
+                <a class="pdf-btn" href="Sofia_Unified_Programme_7-12_December_2026.pdf" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download Programme (PDF)
+                </a>
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="part-hodge">
             <div class="section-tag">01 / Monday – Thursday</div>
             <h3>Hodge Theory and Birational Geometry</h3>
             <div class="subtitle-meta">
-                <strong>Dates:</strong> December 7 – 10, 2026 &nbsp;|&nbsp;
-                <strong>Venue:</strong> Acad. Georgi Bonchev Str., Block 29A, 1113 Sofia, Bulgaria &nbsp;|&nbsp;
-                <strong>Organizer:</strong> ICMS-Sofia / IMI-BAS
+                <span><strong>Dates:</strong> December 7 – 10, 2026</span>
+                <span><strong>Venue:</strong> Acad. Georgi Bonchev Str., Block 29A, 1113 Sofia, Bulgaria</span>
+                <span><strong>Organizer:</strong> ICMS-Sofia / IMI-BAS</span>
             </div>
 
+            <div class="scroll-hint" aria-hidden="true">&#8596; Swipe horizontally to view full schedule</div>
             <div class="table-wrap">
                 <table class="schedule">
                     <thead>
@@ -385,14 +169,15 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="part-revalski">
             <div class="section-tag teal">02 / Friday – Saturday</div>
             <h3 class="teal">Research and Leadership: A Celebration of Julian Revalski’s 70th Birthday</h3>
             <div class="subtitle-meta">
-                <strong>International Conference:</strong> December 11 – 12, 2026 &nbsp;|&nbsp;
-                <strong>Sofia, Bulgaria</strong> (Friday session held jointly with <em>Hodge Theory and Birational Geometry</em>)
+                <span><strong>International Conference:</strong> December 11 – 12, 2026</span>
+                <span><strong>Location:</strong> Sofia, Bulgaria (Friday session held jointly with <em>Hodge Theory and Birational Geometry</em>)</span>
             </div>
 
+            <div class="scroll-hint" aria-hidden="true">&#8596; Swipe horizontally to view Friday &amp; Saturday</div>
             <div class="table-wrap">
                 <table class="schedule revalski">
                     <thead>
@@ -481,15 +266,23 @@
                 </table>
             </div>
 
-            <div class="footnote">
-                Supported by Simons Foundation Grants of ICMS-Sofia and IMSA-Miami and the Ministry of Education and Science of the Republic of Bulgaria.
+            <div class="legend-row">
+                <div>Supported by Simons Foundation Grants of ICMS-Sofia and IMSA-Miami and the Ministry of Education and Science of the Republic of Bulgaria.</div>
+                <div><strong style="color: var(--teal-color);">10 lectures &nbsp;|&nbsp; December 11–12</strong></div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <footer>
-        <p>Hodge Theory and Birational Geometry - 2026</p>
-        <p>Hosted by the <a href="https://icms.bg/" target="_blank" style="color: #ffffff; text-decoration: underline;">International Center for Mathematical Sciences (ICMS-Sofia)</a></p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <strong>Hodge Theory and Birational Geometry &mdash; 2026</strong>
+                <p>Hosted by the <a href="https://icms.bg/" target="_blank" rel="noopener">International Center for Mathematical Sciences (ICMS-Sofia)</a> at IMI-BAS</p>
+            </div>
+            <div class="footer-meta">
+                <p>Sponsored by the Simons Foundation, National Science Foundation, ICMS-Sofia, and the University of Miami</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

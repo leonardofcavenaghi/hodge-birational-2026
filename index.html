@@ -1,298 +1,182 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hodge Theory and Birational Geometry 2026</title>
-    <meta name="description" content="Conference on Complex Algebraic Geometry and Hodge theory, held at ICMS-Sofia, Bulgaria, December 7-11, 2026.">
-
+    <title>Hodge Theory and Birational Geometry 2026 | ICMS-Sofia</title>
+    <meta name="description" content="Conference on Complex Algebraic Geometry and Hodge theory, held at ICMS-Sofia, Bulgaria, December 7–11, 2026, with joint sessions December 11–12.">
     <meta name="google-site-verification" content="4YhP7URcCYqFm9Bz7qw8PxpOOkYGcLMMqgT0WSowYIo" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23183247'/%3E%3Cpolygon points='32,8 56,32 32,56 8,32' fill='none' stroke='%239ad8fc' stroke-width='3.5'/%3E%3Cpolygon points='32,19 45,32 32,45 19,32' fill='%238c1c13' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E">
 
-    <style>
-        :root {
-            --primary-color: #1e3d59;
-            --secondary-color: #8c1c13;
-            --background-color: #f7f9fa;
-            --text-color: #2c3e50;
-            --card-bg: #ffffff;
-            --inst-color: #555555;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 50px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--secondary-color);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.6em;
-            letter-spacing: 1px;
-        }
-        header h2 {
-            margin: 10px 0 0 0;
-            font-size: 1.2em;
-            font-weight: 300;
-        }
-        nav {
-            background-color: #ffffff;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-        nav a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 35px;
-            margin-bottom: 30px;
-        }
-        .poster-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .poster-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .city-image {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .city-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .city-caption {
-            font-size: 0.85em;
-            color: #7f8c8d;
-            margin-top: 5px;
-        }
-        h3 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-        .speaker {
-            background: var(--background-color);
-            padding: 15px;
-            border-radius: 4px;
-            border-left: 4px solid var(--primary-color);
-        }
-        .speaker-name {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        .speaker-inst {
-            font-size: 0.9em;
-            color: var(--inst-color);
-            display: block;
-            margin-top: 3px;
-        }
-        /* Form CSS Variables */
-        .registration-form {
-            background-color: #fafbfc;
-            padding: 25px;
-            border: 1px solid #e1e4e8;
-            border-radius: 4px;
-            margin-top: 20px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        .radio-group {
-            margin-bottom: 8px;
-        }
-        .radio-group input[type="radio"] {
-            margin-right: 8px;
-        }
-        .radio-group label {
-            display: inline;
-            font-weight: normal;
-            color: var(--text-color);
-        }
-        .submit-btn {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-        .submit-btn:hover {
-            background-color: var(--secondary-color);
-        }
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: var(--primary-color);
-            color: #ffffff;
-            font-size: 0.9em;
-            margin-top: 40px;
-        }
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20261127">
 </head>
 <body>
-    <header>
-        <h1>Hodge Theory and Birational Geometry</h1>
-        <h2>December 7 – 11, 2026 | Sofia, Bulgaria</h2>
-        <p style="margin: 10px 0 0 0; font-size: 1.05em; font-style: italic; opacity: 0.92; letter-spacing: 0.3px;">Advancing the Frontier of AI in Algebraic Geometry</p>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-kicker">ICMS-Sofia &nbsp;&middot;&nbsp; IMI-BAS &nbsp;&middot;&nbsp; IMSA</div>
+            <h1>Hodge Theory and Birational Geometry</h1>
+            <h2>December 7 – 11, 2026 &nbsp;|&nbsp; Sofia, Bulgaria</h2>
+            <p class="header-slogan">Advancing the Frontier of <strong>AI in Algebraic Geometry</strong></p>
+            <div class="header-pills">
+                <span class="header-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Unified Programme: Dec 7 – 12, 2026
+                </span>
+                <span class="header-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Acad. Georgi Bonchev Str., Block 29A, Sofia
+                </span>
+            </div>
+        </div>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="program.html">Program</a>
-        <a href="participants.html">Participants</a>
+    <nav class="site-nav" aria-label="Primary">
+        <div class="nav-inner">
+            <div class="nav-links">
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="program.html">Program</a>
+                <a href="participants.html">Participants</a>
+            </div>
+            <a class="nav-cta" href="Sofia_Unified_Programme_7-12_December_2026.pdf" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
+                Programme (PDF)
+            </a>
+        </div>
     </nav>
 
-    <div class="container">
-
-        <div class="card">
-            <p>This conference aims at bringing together specialists in Complex Algebraic Geometry and Hodge theory to promote their research. The event will serve as a platform for discussing recent advancements and fostering collaboration within the international mathematical community.</p>
-            <p style="margin-top: 14px; margin-bottom: 0; padding: 12px 16px; background-color: var(--background-color); border-left: 4px solid var(--secondary-color); border-radius: 4px;">A special focus of this edition is <strong>advancing the frontier of AI in Algebraic Geometry</strong>—exploring how artificial intelligence and automated reasoning can accelerate conjecture generation, computation, and proof discovery.</p>
-        </div>
-
-        <div class="poster-container">
-            <img src="poster.jpg?v=20261127" alt="Hodge Theory Conference Poster">
-        </div>
-
-        <div class="grid-2">
-            <div class="card">
-                <h3>Event Information</h3>
-                <p><strong>Dates:</strong> December 7 - 11, 2026</p>
-                <p><strong>Conference Venue:</strong><br>
-                <a href="https://www.google.com/maps/search/Acad.+Georgi+Bonchev+Str.,+Block+29A,+1113+Sofia,+Bulgaria/" target="_blank" style="color: var(--primary-color); font-weight: bold;">Acad. Georgi Bonchev Str., Block 29A<br>
-                1113 Sofia, Bulgaria</a></p>
-                <p><strong>Organized by:</strong><br>
-                <a href="https://icms.bg/" target="_blank" style="color: var(--secondary-color); font-weight: bold;">International Center for Mathematical Sciences (ICMS-Sofia)</a><br>
-                <span style="color: var(--inst-color); font-size: 0.95em;">Institute of Mathematics and Informatics (IMI-BAS)</span></p>
-            </div>
-
-            <div class="city-image">
-                <img src="sofia-cathedral.jpg" alt="Alexander Nevsky Cathedral, Sofia">
-                <div class="city-caption">Alexander Nevsky Cathedral, Sofia</div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h3>Registration and Financial Support</h3>
-            <p><strong>Registration is now closed.</strong></p>
-            <p>All registered applicants will be contacted by <strong>November 15, 2026</strong>, with information regarding their possible participation in the conference and opportunities to present a poster during the poster session.</p>
-        </div>
-
-        <div class="card">
-            <h3>Organizing Committee</h3>
-            <div class="speakers-grid">
-                <div class="speaker">
-                    <span class="speaker-name">Ludmil Katzarkov</span>
-                    <span class="speaker-inst">University of Miami and ICMS-Sofia</span>
+    <main class="container">
+        <div class="overview-showcase">
+            <div class="overview-stack">
+                <div class="card">
+                    <div class="section-tag">01 / Overview</div>
+                    <h3>About the Conference</h3>
+                    <p class="lead-text">This conference brings together specialists in Complex Algebraic Geometry and Hodge theory to present recent research, exchange methods, and foster collaboration within the international mathematical community.</p>
+                    <div class="focus-callout">
+                        A thematic focus of this edition is <strong>advancing the frontier of AI in Algebraic Geometry</strong>: examining how artificial intelligence, symbolic computation, and automated reasoning support conjecture formulation, explicit calculation, and proof verification.
+                    </div>
+                    <div class="action-row">
+                        <a class="btn-primary" href="program.html">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            View Scientific Programme
+                        </a>
+                        <a class="btn-secondary" href="Sofia_Unified_Programme_7-12_December_2026.pdf" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download PDF Schedule
+                        </a>
+                    </div>
                 </div>
-                <div class="speaker">
-                    <span class="speaker-name">Leonardo Cavenaghi</span>
-                    <span class="speaker-inst">IMI-BAS and ICMS-Sofia</span>
-                </div>
-                <div class="speaker">
-                    <span class="speaker-name">Velichka Milousheva</span>
-                    <span class="speaker-inst">IMI-BAS</span>
-                </div>
-                <div class="speaker">
-                    <span class="speaker-name">Giovane Galindo</span>
-                    <span class="speaker-inst">IMI-BAS and ICMS-Sofia</span>
+
+                <div class="city-card">
+                    <img src="sofia-cathedral.jpg" alt="Alexander Nevsky Cathedral, Sofia" width="1600" height="1067">
+                    <div class="city-caption">
+                        <span>Alexander Nevsky Cathedral, Sofia</span>
+                        <span>Sofia, Bulgaria</span>
+                    </div>
                 </div>
             </div>
+
+            <aside class="poster-showcase" aria-label="Official Conference Poster">
+                <a class="poster-link" href="poster.jpg?v=20261127" target="_blank" rel="noopener" title="Open full-resolution conference poster">
+                    <img src="poster.jpg?v=20261127" alt="Hodge Theory and Birational Geometry 2026 Conference Poster" width="1275" height="2100">
+                </a>
+                <div class="poster-caption">
+                    <span>Official Conference Poster</span>
+                    <a href="poster.jpg?v=20261127" target="_blank" rel="noopener">Full resolution &#8599;</a>
+                </div>
+            </aside>
         </div>
 
         <div class="card">
+            <div class="section-tag">02 / Practical Details</div>
+            <h3>Event Information</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <div>
+                        <span class="info-label">Dates</span>
+                        <div class="info-value">
+                            <strong>December 7 – 11, 2026</strong><br>
+                            <span style="color: var(--inst-color); font-size: 0.92em;">Mon–Thu lectures &amp; mini-courses; Fri–Sat joint conference <em>Research and Leadership</em> (Dec 11 – 12)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <div>
+                        <span class="info-label">Conference Venue</span>
+                        <div class="info-value">
+                            <a href="https://www.google.com/maps/search/Acad.+Georgi+Bonchev+Str.,+Block+29A,+1113+Sofia,+Bulgaria/" target="_blank" rel="noopener">Acad. Georgi Bonchev Str., Block 29A</a><br>
+                            <span style="color: var(--inst-color); font-size: 0.92em;">1113 Sofia, Bulgaria</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path></svg>
+                    <div>
+                        <span class="info-label">Organized by</span>
+                        <div class="info-value">
+                            <a href="https://icms.bg/" target="_blank" rel="noopener">International Center for Mathematical Sciences (ICMS-Sofia)</a><br>
+                            <span style="color: var(--inst-color); font-size: 0.92em;">Institute of Mathematics and Informatics (IMI-BAS) &amp; IMSA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <div>
+                        <span class="info-label">Registration &amp; Poster Session</span>
+                        <div class="info-value">
+                            <span class="status-badge">Registration Closed</span><br>
+                            <span style="color: var(--inst-color); font-size: 0.92em;">Poster session: Tuesday, December 8 (16:00–17:30), followed by the conference reception</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-tag">03 / Mini-Courses</div>
             <h3>Confirmed Courses</h3>
-            <p>In addition to the main conference proceedings, there will be dedicated courses delivered by:</p>
-            <div class="speakers-grid">
+            <p class="section-intro">In addition to the research lectures, the conference features four two-part courses delivered by:</p>
+            <div class="speakers-grid cols-2">
                 <div class="speaker">
-                    <span class="speaker-name">Benjamin Bakker</span>
+                    <div class="speaker-top">
+                        <span class="speaker-name">Benjamin Bakker</span>
+                        <span class="role-pill">2 Lectures</span>
+                    </div>
                     <span class="speaker-inst">University of Illinois at Chicago</span>
                 </div>
                 <div class="speaker">
-                    <span class="speaker-name">Leonardo Cavenaghi</span>
+                    <div class="speaker-top">
+                        <span class="speaker-name">Leonardo Cavenaghi</span>
+                        <span class="role-pill">2 Lectures</span>
+                    </div>
                     <span class="speaker-inst">IMI-BAS and ICMS-Sofia</span>
                 </div>
                 <div class="speaker">
-                    <span class="speaker-name">Bruno Klingler</span>
+                    <div class="speaker-top">
+                        <span class="speaker-name">Bruno Klingler</span>
+                        <span class="role-pill">2 Lectures</span>
+                    </div>
                     <span class="speaker-inst">Humboldt Universität zu Berlin</span>
                 </div>
                 <div class="speaker">
-                    <span class="speaker-name">Emanuele Macrì</span>
+                    <div class="speaker-top">
+                        <span class="speaker-name">Emanuele Macrì</span>
+                        <span class="role-pill">2 Lectures</span>
+                    </div>
                     <span class="speaker-inst">Université Paris-Saclay</span>
                 </div>
             </div>
         </div>
 
         <div class="card">
+            <div class="section-tag">04 / Scientific Lectures</div>
             <h3>Invited speakers</h3>
             <div class="speakers-grid">
                 <div class="speaker">
@@ -349,11 +233,41 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <footer>
-        <p>Hodge Theory and Birational Geometry - 2026</p>
-        <p>Hosted by the <a href="https://icms.bg/" target="_blank" style="color: #ffffff; text-decoration: underline;">International Center for Mathematical Sciences (ICMS-Sofia)</a></p>
+        <div class="card">
+            <div class="section-tag">05 / Organization</div>
+            <h3>Organizing Committee</h3>
+            <div class="speakers-grid cols-2">
+                <div class="speaker">
+                    <span class="speaker-name">Ludmil Katzarkov</span>
+                    <span class="speaker-inst">University of Miami and ICMS-Sofia</span>
+                </div>
+                <div class="speaker">
+                    <span class="speaker-name">Leonardo Cavenaghi</span>
+                    <span class="speaker-inst">IMI-BAS and ICMS-Sofia</span>
+                </div>
+                <div class="speaker">
+                    <span class="speaker-name">Velichka Milousheva</span>
+                    <span class="speaker-inst">IMI-BAS</span>
+                </div>
+                <div class="speaker">
+                    <span class="speaker-name">Giovane Galindo</span>
+                    <span class="speaker-inst">IMI-BAS and ICMS-Sofia</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <strong>Hodge Theory and Birational Geometry &mdash; 2026</strong>
+                <p>Hosted by the <a href="https://icms.bg/" target="_blank" rel="noopener">International Center for Mathematical Sciences (ICMS-Sofia)</a> at IMI-BAS</p>
+            </div>
+            <div class="footer-meta">
+                <p>Sponsored by the Simons Foundation, National Science Foundation, ICMS-Sofia, and the University of Miami</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
