@@ -352,8 +352,8 @@ main.container,
     left: 0;
     bottom: -2px;
     width: 64px;
-    height: 2px;
-    background-color: var(--secondary-color);
+    height: 0;
+    border-bottom: 2px solid var(--secondary-color);
 }
 
 .card h3.teal {
@@ -361,7 +361,7 @@ main.container,
 }
 
 .card h3.teal::after {
-    background-color: var(--teal-color);
+    border-bottom-color: var(--teal-color);
 }
 
 .card p {
@@ -573,6 +573,12 @@ main.container,
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
+}
+
+.city-caption span:last-child {
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .poster-showcase {
@@ -614,12 +620,15 @@ main.container,
     padding: 0 4px;
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.76);
+    text-align: left;
 }
 
 .poster-caption a {
     color: var(--sky-accent);
     text-decoration: none;
     font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .poster-caption a:hover {
@@ -883,7 +892,7 @@ table.schedule.revalski td.time-col {
 
 td.empty-slot {
     background-color: var(--time-bg);
-    color: #7c8d99;
+    color: #596b7b;
 }
 
 td.course-cell {
@@ -993,8 +1002,8 @@ table.schedule td.left-align {
     left: 0;
     bottom: -2px;
     width: 64px;
-    height: 2px;
-    background-color: var(--secondary-color);
+    height: 0;
+    border-bottom: 2px solid var(--secondary-color);
 }
 
 .directory-toolbar h3 {
@@ -1148,7 +1157,7 @@ footer.site-footer a:hover {
     }
 }
 
-@media (max-width: 940px) {
+@media screen and (max-width: 940px) {
     .scroll-hint {
         display: flex;
     }
@@ -1156,9 +1165,44 @@ footer.site-footer a:hover {
     .speakers-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    table.schedule th.col-time,
+    table.schedule td.time-col {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        width: 98px;
+        font-size: 0.82rem;
+        padding-left: 8px;
+        padding-right: 8px;
+        box-shadow: inset -1px 0 0 var(--border-color), 0 1px 0 var(--border-color);
+    }
+
+    table.schedule thead th.col-time {
+        z-index: 3;
+        box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.28);
+    }
+
+    table.schedule.revalski th.col-day {
+        width: calc((100% - 98px) / 2);
+    }
+
+    table.schedule td[colspan] {
+        text-align: left;
+        padding-left: 16px;
+    }
+
+    table.schedule td[colspan] strong {
+        position: sticky;
+        left: 114px;
+    }
 }
 
 @media (max-width: 640px) {
+    [id] {
+        scroll-margin-top: 132px;
+    }
+
     header.site-header {
         padding: 38px 18px 34px;
     }
@@ -1166,6 +1210,11 @@ footer.site-footer a:hover {
     .nav-inner {
         justify-content: center;
         padding: 10px 14px;
+        gap: 10px 14px;
+    }
+
+    .nav-links {
+        justify-content: center;
     }
 
     main.container,
@@ -1200,6 +1249,15 @@ footer.site-footer a:hover {
 }
 
 @media (max-width: 480px) {
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-links a {
+        padding: 6px 10px;
+        font-size: 0.91rem;
+    }
+
     .action-row a,
     .top-bar .pdf-btn {
         width: 100%;
@@ -1227,6 +1285,8 @@ footer.site-footer a:hover {
     }
 
     body {
+        display: block;
+        min-height: 0;
         background: #ffffff;
         color: #000000;
     }
@@ -1234,8 +1294,25 @@ footer.site-footer a:hover {
     header.site-header {
         background: #ffffff !important;
         color: #000000 !important;
-        padding: 14px 0;
+        padding: 10px 0;
         border-bottom: 2px solid #000000;
+    }
+
+    header.site-header h1 {
+        font-size: 1.85rem;
+    }
+
+    header.site-header h2 {
+        margin-top: 8px;
+        font-size: 0.98rem;
+    }
+
+    .header-kicker {
+        margin-bottom: 10px;
+    }
+
+    .header-pills {
+        margin-top: 12px;
     }
 
     header.site-header h1,
@@ -1260,16 +1337,89 @@ footer.site-footer a:hover {
 
     main.container,
     .container {
-        margin: 16px auto;
+        margin: 12px auto;
         padding: 0;
         max-width: 100%;
+    }
+
+    .overview-showcase,
+    .overview-stack,
+    .city-card,
+    .poster-showcase {
+        display: block !important;
+    }
+
+    .overview-showcase {
+        margin-bottom: 14px;
+    }
+
+    .city-card {
+        margin: 14px 0;
+        box-shadow: none !important;
+        border: 1px solid #cccccc;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .city-card img {
+        width: 100%;
+        max-height: 220px;
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+    }
+
+    .poster-showcase {
+        max-width: 430px;
+        margin: 0 auto 14px;
+        padding: 12px;
+        background: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .poster-caption,
+    .poster-caption a {
+        color: #000000 !important;
     }
 
     .card {
         box-shadow: none !important;
         border: 1px solid #cccccc;
-        padding: 18px 20px;
-        margin-bottom: 16px;
+        padding: 14px 16px;
+        margin-bottom: 12px;
+    }
+
+    .card h3 {
+        font-size: 1.38rem;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    .card h3::after,
+    .directory-toolbar::after {
+        border-bottom-color: #000000 !important;
+    }
+
+    .section-tag,
+    .card h3,
+    .directory-toolbar {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    .subtitle-meta {
+        margin: -2px 0 12px 0;
+        padding: 7px 10px;
+        font-size: 0.84rem;
+    }
+
+    #part-revalski {
+        break-before: page;
+        page-break-before: always;
     }
 
     .table-wrap {
@@ -1298,26 +1448,58 @@ footer.site-footer a:hover {
 
     table.schedule th.col-time,
     td.time-col {
+        position: static !important;
         width: 86px;
         font-size: 0.75rem;
+        box-shadow: none !important;
     }
 
     table.schedule th,
     table.schedule td {
-        padding: 6px 6px;
+        padding: 5px 6px;
+    }
+
+    table.schedule td.left-align {
+        padding: 5px 9px;
+    }
+
+    .swatch,
+    td.course-cell,
+    td.seq-cell,
+    td.event-cell {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .legend-row {
+        margin-top: 10px;
+        padding-top: 8px;
+        font-size: 0.82rem;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .footnote {
+        margin-top: 6px;
+        font-size: 0.8rem;
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     .speaker,
     .info-item,
     table.schedule tr {
         break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     footer.site-footer {
         background: #ffffff !important;
         color: #000000 !important;
         border-top: 1px solid #888888;
-        padding: 14px 0 0;
+        padding: 12px 0 0;
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
     footer.site-footer a,
