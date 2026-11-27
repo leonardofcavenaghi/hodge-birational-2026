@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program - Hodge Theory 2026</title>
+    <title>Program - Hodge Theory and Birational Geometry 2026</title>
     <style>
         :root {
-            var(--primary-color): #1e3d59; 
+            --primary-color: #1e3d59;
             --secondary-color: #8c1c13;
+            --teal-color: #1b514d;
             --background-color: #f7f9fa;
             --text-color: #2c3e50;
             --card-bg: #ffffff;
+            --border-color: #cfd8e0;
+            --course-bg: #e3eef8;
+            --seq-bg: #f6efe0;
+            --event-bg: #e4f1e8;
+            --break-bg: #eef2f6;
+            --time-bg: #f5f8fa;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.55;
             color: var(--text-color);
             background-color: var(--background-color);
             margin: 0;
@@ -31,6 +38,11 @@
             margin: 0;
             font-size: 2.6em;
             letter-spacing: 1px;
+        }
+        header h2 {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            font-weight: 300;
         }
         nav {
             background-color: #ffffff;
@@ -50,7 +62,7 @@
             text-decoration: underline;
         }
         .container {
-            max-width: 800px;
+            max-width: 1080px;
             margin: 40px auto;
             padding: 0 20px;
             min-height: 45vh;
@@ -59,17 +71,181 @@
             background: var(--card-bg);
             border-radius: 4px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 50px 30px;
-            text-align: center;
+            padding: 32px 30px;
+            margin-bottom: 30px;
+        }
+        .top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .top-bar-text {
+            flex: 1 1 520px;
+        }
+        .top-bar p {
+            margin: 6px 0 0 0;
+            color: #4f6475;
+            font-size: 0.96em;
+        }
+        .pdf-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 22px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            white-space: nowrap;
+        }
+        .pdf-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .section-tag {
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--secondary-color);
+            margin-bottom: 4px;
+        }
+        .section-tag.teal {
+            color: var(--teal-color);
         }
         h3 {
             color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.8em;
+            margin: 0 0 6px 0;
+            font-size: 1.65em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
         }
-        .construction-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
+        h3.teal {
+            color: var(--teal-color);
+            border-bottom-color: var(--teal-color);
+        }
+        .subtitle-meta {
+            color: #556877;
+            font-size: 0.95em;
+            margin: 8px 0 18px 0;
+        }
+        .table-wrap {
+            overflow-x: auto;
+        }
+        table.schedule {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            font-size: 0.94em;
+            min-width: 720px;
+        }
+        table.schedule th.col-time {
+            width: 112px;
+        }
+        table.schedule.revalski th.col-day {
+            width: calc((100% - 112px) / 2);
+        }
+        table.schedule th,
+        table.schedule td {
+            border: 1px solid var(--border-color);
+            padding: 10px 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        table.schedule thead th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 12px 10px;
+        }
+        table.schedule.revalski thead th {
+            background-color: var(--teal-color);
+        }
+        table.schedule thead th .day-date {
+            display: block;
+            font-weight: 400;
+            font-size: 0.86em;
+            opacity: 0.88;
+            margin-top: 2px;
+        }
+        td.time-col {
+            background-color: var(--time-bg);
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 112px;
+            white-space: nowrap;
+            font-size: 0.9em;
+        }
+        table.schedule.revalski td.time-col {
+            color: var(--teal-color);
+        }
+        td.course-cell {
+            background-color: var(--course-bg);
+        }
+        td.seq-cell {
+            background-color: var(--seq-bg);
+        }
+        td.event-cell {
+            background-color: var(--event-bg);
+        }
+        td.break-cell {
+            background-color: var(--break-bg);
+            color: #4f6475;
+            font-size: 0.88em;
+            padding: 6px 10px;
+        }
+        table.schedule td.left-align {
+            text-align: left;
+            padding: 11px 15px;
+        }
+        .spk-name {
+            font-weight: 700;
+            color: #1c2b36;
+            display: block;
+        }
+        .spk-sub {
+            font-size: 0.84em;
+            color: #425666;
+            display: block;
+            margin-top: 2px;
+        }
+        .talk-title {
+            font-style: italic;
+            font-size: 0.9em;
+            color: #2e4050;
+            display: block;
+            margin-top: 3px;
+        }
+        .legend-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 14px;
+            font-size: 0.88em;
+            color: #4f6475;
+        }
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
+        }
+        .swatch {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 1px solid var(--border-color);
+            vertical-align: -2px;
+            margin-right: 6px;
+            border-radius: 2px;
+        }
+        .footnote {
+            margin-top: 10px;
+            font-size: 0.86em;
+            color: #607282;
         }
         footer {
             text-align: center;
@@ -84,9 +260,10 @@
 <body>
     <header>
         <h1>Hodge Theory and Birational Geometry</h1>
-        <h2 style="margin: 10px 0 0 0; font-size: 1.2em; font-weight: 300;">December 7 – 11, 2026 | Sofia, Bulgaria</h2>
+        <h2>December 7 – 11, 2026 | Sofia, Bulgaria</h2>
+        <p style="margin: 10px 0 0 0; font-size: 1.05em; font-style: italic; opacity: 0.92; letter-spacing: 0.3px;">Advancing the Frontier of AI in Algebraic Geometry</p>
     </header>
-    
+
     <nav>
         <a href="index.html">Home</a>
         <a href="program.html">Program</a>
@@ -95,9 +272,218 @@
 
     <div class="container">
         <div class="card">
-            <div class="construction-icon">🚧</div>
-            <h3>Program Under Construction</h3>
-            <p>The detailed schedule, including the times for the primary lectures and the supplementary courses by Benjamin Bakker, Leonardo Cavenaghi, Bruno Klingler, and Emanuele Macrì, is currently being finalized.</p>
+            <div class="top-bar">
+                <div class="top-bar-text">
+                    <strong style="font-size: 1.15em; color: var(--primary-color);">Unified Scientific Programme (December 7 – 12, 2026)</strong>
+                    <p>Includes <em>Hodge Theory and Birational Geometry</em> (Monday–Thursday, December 7–10) and the joint conference <em>Research and Leadership: A Celebration of Julian Revalski’s 70th Birthday</em> (Friday–Saturday, December 11–12). All times are Sofia local time (EET).</p>
+                </div>
+                <a class="pdf-btn" href="Sofia_Unified_Programme_7-12_December_2026.pdf" target="_blank" rel="noopener">Download Programme (PDF)</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-tag">01 / Monday – Thursday</div>
+            <h3>Hodge Theory and Birational Geometry</h3>
+            <div class="subtitle-meta">
+                <strong>Dates:</strong> December 7 – 10, 2026 &nbsp;|&nbsp;
+                <strong>Venue:</strong> Acad. Georgi Bonchev Str., Block 29A, 1113 Sofia, Bulgaria &nbsp;|&nbsp;
+                <strong>Organizer:</strong> ICMS-Sofia / IMI-BAS
+            </div>
+
+            <div class="table-wrap">
+                <table class="schedule">
+                    <thead>
+                        <tr>
+                            <th class="col-time">Time</th>
+                            <th>Monday<span class="day-date">December 7</span></th>
+                            <th>Tuesday<span class="day-date">December 8</span></th>
+                            <th>Wednesday<span class="day-date">December 9</span></th>
+                            <th>Thursday<span class="day-date">December 10</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-col">10:00–10:50</td>
+                            <td class="course-cell"><span class="spk-name">Benjamin Bakker</span><span class="spk-sub">Course I</span></td>
+                            <td class="course-cell"><span class="spk-name">Bruno Klingler</span><span class="spk-sub">Course I</span></td>
+                            <td class="course-cell"><span class="spk-name">Emanuele Macrì</span><span class="spk-sub">Course I</span></td>
+                            <td class="seq-cell"><span class="spk-name">Laurent Meersseman</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">10:50–11:10</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">11:10–12:00</td>
+                            <td class="course-cell"><span class="spk-name">Benjamin Bakker</span><span class="spk-sub">Course II</span></td>
+                            <td class="course-cell"><span class="spk-name">Bruno Klingler</span><span class="spk-sub">Course II</span></td>
+                            <td class="course-cell"><span class="spk-name">Emanuele Macrì</span><span class="spk-sub">Course II</span></td>
+                            <td class="seq-cell"><span class="spk-name">Kyoung-Seog Lee</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">12:00–14:00</td>
+                            <td class="break-cell" colspan="4"><strong>Lunch break</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">14:00–14:50</td>
+                            <td><span class="spk-name">Jérémy Guéré</span></td>
+                            <td><span class="spk-name">Andrew Harder</span></td>
+                            <td><span class="spk-name">Laurent Manivel</span></td>
+                            <td class="seq-cell"><span class="spk-name">Ernesto Lupercio</span><span class="spk-sub">Lecture I</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">14:50–15:10</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">15:10–16:00</td>
+                            <td><span class="spk-name">Sukjoo Lee</span></td>
+                            <td class="course-cell"><span class="spk-name">Leonardo Cavenaghi</span><span class="spk-sub">Course I</span></td>
+                            <td class="course-cell"><span class="spk-name">Leonardo Cavenaghi</span><span class="spk-sub">Course II</span></td>
+                            <td class="seq-cell"><span class="spk-name">Ernesto Lupercio</span><span class="spk-sub">Lecture II</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">16:00–16:50</td>
+                            <td><span class="spk-name">Vladimiro Benedetti</span></td>
+                            <td class="event-cell" rowspan="2"><span class="spk-name">Poster session</span><span class="spk-sub">16:00–17:30</span></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">16:50–17:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">Evening</td>
+                            <td></td>
+                            <td class="event-cell"><span class="spk-name">Conference reception</span></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="legend-row">
+                <div class="legend-items">
+                    <span><span class="swatch" style="background-color: var(--course-bg);"></span>Mini-courses</span>
+                    <span><span class="swatch" style="background-color: var(--seq-bg);"></span>Joint lecture sequence</span>
+                    <span><span class="swatch" style="background-color: var(--event-bg);"></span>Posters and reception</span>
+                </div>
+                <div><strong>17 lectures &nbsp;|&nbsp; 12 speakers &nbsp;|&nbsp; Poster session</strong></div>
+            </div>
+            <div class="footnote">
+                All scientific lectures in Part I last 50 minutes. Tuesday reception time to be confirmed.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-tag teal">02 / Friday – Saturday</div>
+            <h3 class="teal">Research and Leadership: A Celebration of Julian Revalski’s 70th Birthday</h3>
+            <div class="subtitle-meta">
+                <strong>International Conference:</strong> December 11 – 12, 2026 &nbsp;|&nbsp;
+                <strong>Sofia, Bulgaria</strong> (Friday session held jointly with <em>Hodge Theory and Birational Geometry</em>)
+            </div>
+
+            <div class="table-wrap">
+                <table class="schedule revalski">
+                    <thead>
+                        <tr>
+                            <th class="col-time">Time</th>
+                            <th class="col-day">Friday<span class="day-date">December 11, 2026</span></th>
+                            <th class="col-day">Saturday<span class="day-date">December 12, 2026</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-col">09:30</td>
+                            <td class="seq-cell left-align"><span class="spk-name">Opening</span></td>
+                            <td class="time-col" style="color: #7c8d99;">—</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">10:00–11:00</td>
+                            <td class="left-align">
+                                <span class="spk-name">Phillip Griffiths</span>
+                                <span class="talk-title">Variational properties of linked pairs of algebraic cycles</span>
+                            </td>
+                            <td class="left-align">
+                                <span class="spk-name">Jean-Pierre Bourguignon</span>
+                                <span class="talk-title">Some Geometric Applications of Special Infinite Dimensional Integral Invariants à la Élie Cartan</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">11:00–11:20</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">11:20–12:20</td>
+                            <td class="left-align">
+                                <span class="spk-name">Maxim Kontsevich</span>
+                                <span class="talk-title">TBA</span>
+                            </td>
+                            <td class="left-align">
+                                <span class="spk-name">Stanimir Troyanski</span>
+                                <span class="talk-title">Isomorphically polyhedral spaces</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">12:20–14:30</td>
+                            <td class="event-cell" colspan="2"><strong>Lunch break</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">14:30–15:30</td>
+                            <td class="left-align">
+                                <span class="spk-name">Stefan Ivanov</span>
+                                <span class="talk-title">Extremals and the best constant of the Sobolev-Folland-Stein inequality on the quaternionic Heisenberg groups and solution of the qc Yamabe equation on a 3-Sasakian manifolds</span>
+                            </td>
+                            <td class="left-align">
+                                <span class="spk-name">Nadezhda Ribarska &amp; Mikhail Krastanov</span>
+                                <span class="talk-title">On the Pontryagin Maximum Principle</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">15:40–16:40</td>
+                            <td class="left-align">
+                                <span class="spk-name">Vladimir Veliov</span>
+                                <span class="talk-title">Regularity results in optimization problems constrained by differential equations</span>
+                            </td>
+                            <td class="left-align">
+                                <span class="spk-name">Mikhail Krastanov &amp; Nadezhda Ribarska</span>
+                                <span class="talk-title">On the Euler equation</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">16:40–17:00</td>
+                            <td class="break-cell">Coffee break</td>
+                            <td class="break-cell">Coffee break</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">17:00–18:00</td>
+                            <td class="left-align">
+                                <span class="spk-name">Denka Kutzarova</span>
+                                <span class="talk-title">Asymptotic convexity properties in Banach spaces</span>
+                            </td>
+                            <td class="left-align">
+                                <span class="spk-name">Mina Teicher</span>
+                                <span class="talk-title">TBA</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footnote">
+                Supported by Simons Foundation Grants of ICMS-Sofia and IMSA-Miami and the Ministry of Education and Science of the Republic of Bulgaria.
+            </div>
         </div>
     </div>
 
